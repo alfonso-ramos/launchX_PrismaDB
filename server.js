@@ -60,6 +60,11 @@ app.get('/explorersInfo', async (req, res) =>{
     res.json(allExplorers)
 })
 
+app.get('/explorersInfo/:id', async (req, res) =>{
+    const id = req.params.id;
+    const explorer = await prisma.explorerInfo.findUnique({where: {id: parseInt(id)}})
+    res.json(explorer)
+})
 app.listen(port, () =>{
     console.log(`Listening to the request port ${port}`)
 })
