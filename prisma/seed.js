@@ -71,3 +71,42 @@ const prisma = new PrismaClient();
     await prisma.$disconnect();
   }
 })();
+
+(async function main(){
+  try {
+    const explorer = await prisma.explorerInfo.upsert({
+      where: {name: 'Explorer'},
+      update: {},
+      create:{
+        name: "Explorer",
+        lang: "JavaScript",
+        missionComander: "Carlo",
+      }
+    })
+    const explorer2 = await prisma.explorerInfo.upsert({
+      where: {name: 'Explorer 2'},
+      update: {},
+      create:{
+        name: "Explorer 2",
+        lang: "JavaScript",
+        missionComander: "Carlo",
+      }
+    })
+    const explorer3 = await prisma.explorerInfo.upsert({
+      where: {name: 'Explorer 3'},
+      update: {},
+      create:{
+        name: "Explorer 3",
+        lang: "Java",
+        missionComander: "Fer",
+      }
+    })
+
+    console.log("Create 3 explorers");
+  }catch(e) {
+    console.error(e);
+    process.exit(1);
+  } finally {
+    await prisma.$disconnect();
+  }
+})();

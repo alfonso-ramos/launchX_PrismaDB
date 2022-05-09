@@ -19,11 +19,11 @@ model Explorer {
   dateCreated DateTime @default(now())
   lastUpdated DateTime @updatedAt
 }
-model Explorer2 {
+model ExplorerInfo {
   id Int @id @default(autoincrement())
   name String @unique
   lang String @db.VarChar(255)
   missionComander String @db.VarChar(255)
-  enrollments Int
+  enrollments Int @default(1)
   hasCertification Boolean @default(false)
 }
