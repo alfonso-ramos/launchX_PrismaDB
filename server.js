@@ -33,6 +33,20 @@ app.post('/explorers', async (req, res) =>{
     return res.json({messagegi })
 })
 
+app.put('/explorers/:id', async (req, res) =>{
+    const id = parseInt(req.params.id);
+
+    await prisma.explorers.update({
+        where: {
+            id: id
+        },
+        data:{
+            mission: req.body.mission
+        }
+    })
+    return res.json({message: "Actualizado correctamente"})
+})
+
 app.listen(port, () =>{
     console.log(`Listening to the request port ${port}`)
 })
