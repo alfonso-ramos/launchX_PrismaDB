@@ -102,7 +102,7 @@ const prisma = new PrismaClient();
       }
     })
 
-    console.log("Create 3 explorers");
+    console.log("Create 3 explorers with info");
   }catch(e) {
     console.error(e);
     process.exit(1);
