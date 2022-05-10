@@ -93,6 +93,12 @@ app.put('explorersInfo/:id', async (req, res) =>{
     return res.json({message: 'Registro actualizado correctamente'})
 })
 
+app.delete('/explorersInfo/:id', async (req, res) =>{
+    const id = parseInt(req.params.id);
+    await prisma.explorer.delete({where: {id:id}});
+    return res.json({message: "Registro eliminado correctamente"})
+})
+
 app.listen(port, () =>{
     console.log(`Listening to the request port ${port}`)
 })
