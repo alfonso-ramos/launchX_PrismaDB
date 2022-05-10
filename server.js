@@ -65,6 +65,18 @@ app.get('/explorersInfo/:id', async (req, res) =>{
     const explorer = await prisma.explorerInfo.findUnique({where: {id: parseInt(id)}})
     res.json(explorer)
 })
+
+app.post('/explorerInfo', async(req, res) =>{
+    const explorer = {
+        name: req.body.name,
+        lang: req.body.lang,
+        missionComander: req.body.missionComander
+    };
+    const message = console.log('Regsitro creado.');
+    await prisma.explorerInfo.create({data:explorer});
+    return res.json({message})
+})
+
 app.listen(port, () =>{
     console.log(`Listening to the request port ${port}`)
 })
